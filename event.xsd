@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_0"
-	targetNamespace="http://common.tv.se/event/v4_0" elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_1"
+	targetNamespace="http://common.tv.se/event/v4_1" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
 	<xs:element name="event" type="eventType">
 		<xs:annotation>
@@ -26,7 +26,6 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="descriptionList" type="descriptionListType" minOccurs="0" />
-		
 			<xs:element name="rerun" type="xs:boolean">
 				<xs:annotation>
 					<xs:documentation>indicates if this is a rerun, the rules for
@@ -57,7 +56,25 @@
 					</xs:documentation>
 				</xs:annotation>			
 			</xs:element>
-			<xs:element name="timeList" type="timeListType" minOccurs="0" />
+			<xs:element name="nextEpisodeList" type="nextEpisodeListType" minOccurs="0" >
+				<xs:annotation>
+					<xs:documentation>indicates the start time of next episode
+						</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="highlightList" type="highlightListType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of highlights
+						</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			<xs:element name="premiere" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>indicates if the event is a premiere
+						</xs:documentation>
+				</xs:annotation>
+			</xs:element>						
+			<xs:element name="timeList" type="timeListType" minOccurs="1" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="descriptionListType">
@@ -171,18 +188,51 @@
 							<xs:documentation>The order the events with in a group should been viewed</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-			
 			</xs:extension>
-				
 		</xs:simpleContent>
-		
+	</xs:complexType>
+	<xs:complexType name="nextEpisodeListType">
+		<xs:sequence>
+			<xs:element name="nextEpisode" type="nextEpisodeType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+		<xs:complexType name="nextEpisodeType" >
+		<xs:sequence>
+			<xs:element name="channelId" type="xs:string" minOccurs="0"/>
+			<xs:element name="channelName" type="xs:string" minOccurs="0"/>
+			<xs:element name="startTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="startTimeText" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="highlightListType">
+		<xs:sequence>
+			<xs:element name="highlight" type="highlightType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="highlightType" >
+		<xs:sequence>
+			<xs:element name="category" type="xs:int" minOccurs="1"/>
+			<xs:element name="priority" default="0">
+				<xs:annotation>
+					<xs:documentation>Priority 0-10 where 0=no ranking, 1=top ranking</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0" />
+						<xs:maxInclusive value="10" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="timecode">
 		<xs:restriction base="xs:string" />
 	</xs:simpleType>
 	<xs:complexType name="timeListType">
 		<xs:sequence>
-			<xs:element name="time" type="timeType" minOccurs="0"
+			<xs:element name="time" type="timeType" minOccurs="1"
 				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>

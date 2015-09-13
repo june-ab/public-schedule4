@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014, 2015 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_0"
-	targetNamespace="http://common.tv.se/content/v4_0" elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_1"
+	targetNamespace="http://common.tv.se/content/v4_1" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
     <xs:element name="content" type="contentType">
 		<xs:annotation>
@@ -115,6 +115,13 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="ratingList" type="ratingListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of content rating
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>			
 			<xs:element name="imageList" type="imageListType"
 				minOccurs="0">
 				<xs:annotation>
@@ -338,9 +345,9 @@
 	</xs:complexType>
 	<xs:complexType name="dvbGenreType">
 		<xs:sequence>
-			<xs:element name="nibble1" type="dvbGenreNibbleType" />
-			<xs:element name="nibble2" type="dvbGenreNibbleType"
-				minOccurs="0" />
+			<xs:element name="nibble1" type="dvbGenreNibbleType"/>
+			<xs:element name="nibble2" type="dvbGenreNibbleType"/>
+			<xs:element name="userByte" type="userByteType"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="dvbGenreNibbleType">
@@ -349,6 +356,25 @@
 			<xs:maxInclusive value="15" />
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="userByteType">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="9999" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ratingListType">
+		<xs:sequence>
+			<xs:element name="rating" type="ratingType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="ratingType">
+		<xs:sequence>
+			<xs:element name="value" type="xs:float" minOccurs="1"/>
+			<xs:element name="source" type="xs:string" minOccurs="1"/>				
+		</xs:sequence>
+		<xs:attribute name="type" type="contextType" default="content"></xs:attribute>
+	</xs:complexType>
 	<xs:complexType name="creditListType">
 		<xs:sequence>
 			<xs:element name="credit" type="creditType" minOccurs="0"
@@ -558,8 +584,8 @@
 	</xs:complexType>
 	<xs:complexType name="sportType">
 		<xs:sequence>
-			<xs:element name="sportsCategory" type="sportsCategoryType"
-				minOccurs="0" />
+			<xs:element name="sportsCategoryList" type="sportsCategoryListType"
+				minOccurs="0" />				
 			<xs:element name="leagueOrCompetitionList" type="leagueOrCompetitionListType"
 				minOccurs="0" />
 			<xs:element name="roundOrEpisodeList" type="roundOrEpisodeListType"
@@ -567,6 +593,12 @@
 			<xs:element name="homeTeamList" type="teamListType" minOccurs="0" />
 			<xs:element name="awayTeamList" type="teamListType" minOccurs="0" />
 			<xs:element name="venueList" type="venueListType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sportsCategoryListType">
+		<xs:sequence>
+			<xs:element name="sportsCategory" type="sportsCategoryType"
+				minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="sportsCategoryType">
@@ -630,20 +662,17 @@
 	<xs:complexType name="countryType">					
 		<xs:sequence>
 			<xs:element name="name" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:string"/>			
+		</xs:sequence>			
 	</xs:complexType>	
 	<xs:complexType name="cityType">
 		<xs:sequence>
 			<xs:element name="name" type="nameType" minOccurs="0" maxOccurs="unbounded" />
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:string"/>		
+		</xs:sequence>		
 	</xs:complexType>	
 	<xs:complexType name="stadiumType">
 		<xs:sequence>
 			<xs:element name="name" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:string"/>		
+		</xs:sequence>		
 	</xs:complexType>	
 	<xs:complexType name="nameType">
 		<xs:simpleContent>
