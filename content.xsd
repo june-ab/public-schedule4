@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_0"
+	targetNamespace="http://common.tv.se/content/v4_0" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="1.0">
+    <xs:element name="content" type="contentType">
+		<xs:annotation>
+			<xs:documentation>Root element for content object</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="contentType">
+		<xs:sequence>
+			<xs:element name="contentId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>unique id for content, should include provider
+						name
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="seriesId" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>id for series, not unique</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="seasonNumber" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>the season number
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="episodeNumber" type="xs:long" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>episode number for the content
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numberOfEpisodes" type="xs:long"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>if the content belongs to a serie, this is the
+						total number of episodes in that serie.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="productionYear" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="[1-2][0-9][0-9][0-9]" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="countryOfOriginList" type="countryListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of production countries. Use language codes
+						in IS0 3166-1-alpha-2
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="titleList" type="titleListType">
+				<xs:annotation>
+					<xs:documentation>Title list for content. At least one occurrence
+						with the language used in the market/country displaying the
+						content.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="genericTitleList" type="genericTitleListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Generic title list for content.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="descriptionList" type="descriptionListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>List of descriptions
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sport" type="sportType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>For content describing sport material
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="genreList" type="genreListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Genre, the content belongs to. Check with the
+						partners about valid genres.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dvbGenre" type="dvbGenreType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>dvb genres, two numbers between 0-15
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="keywordList" type="keywordListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of keywords for the content, should be
+						single words, and consistent within each provider
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="creditList" type="creditListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of actors, producers etc. should be
+						consistent within each provider
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="imageList" type="imageListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of content related images
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="mediaReferenceList" type="mediaReferenceListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of media references,TeliaSonera isn't
+						interested in any other media for the moment
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="categoryList" type="categoryListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Category path expression</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="regionalContent" type="xs:boolean"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>true indicates regional content
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="parentalRating" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Parental rating 0-18y</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:long">
+						<xs:minInclusive value="0" />
+						<xs:maxInclusive value="18" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="externalReferenceList" type="externalReferenceListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>List of externalReference
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="timestamp" type="xs:dateTime" use="required">
+			<xs:annotation>
+				<xs:documentation>Timestamp when document is created
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="titleListType">
+		<xs:sequence>
+			<xs:element name="title" type="originalTitleType"
+				maxOccurs="unbounded" />
+			<xs:element name="titleId" type="xs:string" minOccurs="0" />
+
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="genericTitleListType">
+		<xs:sequence>
+			<xs:element name="title" type="genericTitleType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="genericTitleType">
+		<xs:simpleContent>
+			<xs:extension base="simpleTitleType">
+				<xs:attribute name="type" type="contextType" default="content"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="descriptionListType">
+		<xs:sequence>
+			<xs:element name="description" type="descriptionType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="keywordListType">
+		<xs:sequence>
+			<xs:element name="keyword" type="keywordType" minOccurs="0"
+				maxOccurs="50" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="keywordType">
+		<xs:simpleContent>
+			<xs:extension base="textType">
+				<xs:attribute name="priority" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>lower priority number means higher importance
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="genreListType">
+		<xs:sequence>
+			<xs:element name="genre" type="genreType" minOccurs="0"
+				maxOccurs="50" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="genreType">
+		<xs:simpleContent>
+			<xs:extension base="textType">
+				<xs:attribute name="priority" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>lower priority number means higher importance
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="simpleTitleType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="100" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="titleType">
+		<xs:simpleContent>
+
+			<xs:restriction base="textType">
+				<xs:maxLength value="300" />
+			</xs:restriction>
+
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="originalTitleType">
+		<xs:simpleContent>
+			<xs:extension base="titleType">
+
+				<xs:attribute name="original" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Marks a title as the original title
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+
+			</xs:extension>
+
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="descriptionType">
+		<xs:simpleContent>
+			<xs:extension base="descriptionTextType">
+				<xs:attribute name="length" type="descriptionLengthType"
+					use="optional">
+					<xs:annotation>
+						<xs:documentation>TeliaSonera want's only one description per
+							context. If more is sent we look for "medium"
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="descriptionTextType">
+		<xs:simpleContent>
+			<xs:restriction base="textType">
+				<xs:maxLength value="3000" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="textType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="contextType" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="descriptionLengthType">
+		<xs:annotation>
+			<xs:documentation>length (and content) of the description
+				e.g, tiny
+				may be 1-25 characters, short 26-140,medium 141-240, long
+				241-999,
+				extended > 1000
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="tiny" />
+			<xs:enumeration value="short" />
+			<xs:enumeration value="medium" />
+			<xs:enumeration value="long" />
+			<xs:enumeration value="extended" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="contextType">
+		<xs:annotation>
+			<xs:documentation>type of entity the metadata is refered to, content if
+				it is the content entity itself, series or season if the metadata
+				refers to series or season
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="content" />
+			<xs:enumeration value="series" />
+			<xs:enumeration value="season" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="countryListType">
+		<xs:sequence>
+			<xs:element name="country" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>code in ISO 3166-1-alpha-2</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dvbGenreType">
+		<xs:sequence>
+			<xs:element name="nibble1" type="dvbGenreNibbleType" />
+			<xs:element name="nibble2" type="dvbGenreNibbleType"
+				minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="dvbGenreNibbleType">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="15" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="creditListType">
+		<xs:sequence>
+			<xs:element name="credit" type="creditType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="creditType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="rolename" type="xs:string" minOccurs="0" />
+			<xs:element name="function">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="director" />
+						<xs:enumeration value="actor" />
+						<xs:enumeration value="guest" />
+						<xs:enumeration value="host" />
+						<xs:enumeration value="artist" />
+						<xs:enumeration value="narrator" />
+						<xs:enumeration value="commentator" />
+						<xs:enumeration value="other" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="type" type="contextType" default="content"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="imageRefType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="orientation">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="landscape" />
+							<xs:enumeration value="portrait" />
+							<xs:enumeration value="square" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="width">
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="height">
+					<xs:simpleType>
+						<xs:restriction base="xs:int">
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="px"></xs:enumeration>
+							<xs:enumeration value="cm"></xs:enumeration>
+							<xs:enumeration value="mm"></xs:enumeration>
+							<xs:enumeration value="in"></xs:enumeration>
+							<xs:enumeration value="pt"></xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="priority" type="xs:long">
+					<xs:annotation>
+						<xs:documentation>lower priority number means higher importance
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="purpose">
+					<xs:simpleType>
+						<xs:annotation>
+							<xs:documentation>Set if the images are created for different
+								purposes. TeliaSonera want's only posters. If the attribute is
+								set all other will be dropped.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="poster"></xs:enumeration>
+							<xs:enumeration value="promotion"></xs:enumeration>
+							<xs:enumeration value="press"></xs:enumeration>
+							<xs:enumeration value="logo"></xs:enumeration>
+							<xs:enumeration value="other"></xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="imageType">
+		<xs:sequence>
+			<xs:element name="imageRef" type="imageRefType" />
+			<xs:element name="captionList" type="captionListType"
+				minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>TeliaSonera hasn't got any implementation for this at moment
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="copyRightList" type="copyRightsListType"
+				minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>TeliaSonera hasn't got any implementation for this at moment
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="type" type="contextType" default="content"></xs:attribute>
+
+	</xs:complexType>
+
+	<xs:complexType name="imageListType">
+		<xs:sequence>
+			<xs:element name="image" type="imageType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="captionListType">
+		<xs:sequence>
+			<xs:element name="caption" type="langType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="copyRightsListType">
+		<xs:sequence>
+			<xs:element name="copyRight" type="langType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="langType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="mediaReferenceListType">
+		<xs:sequence>
+			<xs:element name="reference" type="mediaReferenceType"
+				minOccurs="0" maxOccurs="unbounded" />
+
+
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="mediaReferenceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="contextType">
+
+				</xs:attribute>
+				<xs:attribute name="priority" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>lower priority number means higher importance
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="categoryListType">
+		<xs:sequence>
+			<xs:element name="category" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="treeNode" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>element in a category tree</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:string">
+										<xs:attribute name="order" type="xs:long">
+											<xs:annotation>
+												<xs:documentation>position in category tree
+												</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="priority" type="xs:long">
+						<xs:annotation>
+							<xs:documentation>importance of category, lower priority number
+								means higher importance
+							</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+					<xs:attribute name="pattern" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>pattern name, describes type of tree.
+								TeliaSonera hasn't got any implementation for this at moment
+							</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sportType">
+		<xs:sequence>
+			<xs:element name="sportsCategory" type="sportsCategoryType"
+				minOccurs="0" />
+			<xs:element name="leagueOrCompetitionList" type="leagueOrCompetitionListType"
+				minOccurs="0" />
+			<xs:element name="roundOrEpisodeList" type="roundOrEpisodeListType"
+				minOccurs="0" />
+			<xs:element name="homeTeamList" type="teamListType" minOccurs="0" />
+			<xs:element name="awayTeamList" type="teamListType" minOccurs="0" />
+			<xs:element name="venueList" type="venueListType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sportsCategoryType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="40" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="leagueOrCompetitionListType">
+		<xs:sequence>
+			<xs:element name="leagueOrCompetition" type="leagueOrCompetitionType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="leagueOrCompetitionType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="40" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="roundOrEpisodeListType">
+		<xs:sequence>
+			<xs:element name="roundOrEpisode" type="roundOrEpisodeType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="roundOrEpisodeType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="40" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="teamListType">
+		<xs:sequence>
+			<xs:element name="team" type="teamType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="teamType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="40" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="venueListType">
+		<xs:sequence>
+			<xs:element name="venue" type="venueType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="venueType">
+		<xs:sequence>
+			<xs:element name="country" type="countryType" minOccurs="0" />
+			<xs:element name="city" type="cityType" minOccurs="0" />
+			<xs:element name="stadium" type="stadiumType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="countryType">					
+		<xs:sequence>
+			<xs:element name="name" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>			
+	</xs:complexType>	
+	<xs:complexType name="cityType">
+		<xs:sequence>
+			<xs:element name="name" type="nameType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>		
+	</xs:complexType>	
+	<xs:complexType name="stadiumType">
+		<xs:sequence>
+			<xs:element name="name" type="nameType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>		
+	</xs:complexType>	
+	<xs:complexType name="nameType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="40" />
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="simpleTextType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!-- types -->
+	<xs:complexType name="contentListType">
+		<xs:sequence>
+			<xs:element name="content" type="contentType" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>content for this event, optional. if not set
+						contentIdRef must be set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="externalReferenceListType">
+		<xs:sequence>
+			<xs:element name="externalReference" type="externalReferenceType"
+				minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>list of external resources that can used to
+						connect/boost the content data with.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="externalReferenceType">
+		<xs:sequence>
+			<xs:element name="provider" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Who is the provides for the extend data that can
+						be used for this content. It can for example be score24.com or
+						IMDB.com
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="id" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data identifier to map this content to in the
+						external provider/partners data
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="uri" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Resource to use for reach the data at the
+						provider
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="type" type="contextType" />
+	</xs:complexType>
+
+</xs:schema>

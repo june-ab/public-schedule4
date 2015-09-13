@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_0"
+	targetNamespace="http://common.tv.se/event/v4_0" elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="1.0">
+	<xs:element name="event" type="eventType">
+		<xs:annotation>
+			<xs:documentation>root node of event</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!-- types -->
+	<xs:complexType name="basicEventType">
+		<xs:sequence>
+			<xs:element name="eventId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>unique id for the event, should start with
+						provider name, for example: 'se.svt.123456'
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="channelId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>id for the current service or channel, could be
+						for example 'se.svt.svt2', 'se.svt.play' or 'se.tv4.tv4plus'
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="descriptionList" type="descriptionListType" minOccurs="0" />
+		
+			<xs:element name="rerun" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>indicates if this is a rerun, the rules for
+						decision could is set by the provider and could be
+						different between providers
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="live" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>indicates if this event is live.
+					TeliaSonera hasn't got any implementation for this at moment
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="hidden" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>indicates if this event is hidden, i.e. if it
+						should not be public. 
+						TeliaSonera hasn't got any implementation for this at moment
+						</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="groupId" type="eventGroupType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If the event have natural many parts mark them with the same groupId,
+					for instance a soccer game that have two halfs.
+					</xs:documentation>
+				</xs:annotation>			
+			</xs:element>
+			<xs:element name="timeList" type="timeListType" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="descriptionListType">
+		<xs:sequence>
+			<xs:element name="description" type="langType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="langType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+	<xs:complexType name="embeddedEventType">
+	<xs:annotation>
+		<xs:documentation>TeliaSonera handles embeddedEvents the same way as ordinary events. 
+		</xs:documentation>
+	</xs:annotation>
+	
+		<xs:complexContent>
+			<xs:extension base="basicEventType">
+				<xs:sequence>
+					<xs:element name="contentIdRef" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>reference to contentId for this event for
+								convenience as this could be obtained via materialIdRef
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialIdRef" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>reference to contentId for this event
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="previousEventList" type="basicEventListType"
+						minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>list if events that occured in time before
+								current event, i.e. same contentId. TeliaSonera hasn't 
+								got any implementation for this at moment
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="comingEventList" type="basicEventListType"
+						minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>list of events that occurred in time after
+								current event, i.e. same contentId. TeliaSonera hasn't got 
+								any implementation for this at moment
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="eventType">
+		<xs:complexContent>
+			<xs:extension base="embeddedEventType">
+				<xs:sequence>
+					<xs:element name="embeddedEventList" type="embeddedEventListType"
+						minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>list of events that occurs as part of current
+								event.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="timestamp" type="xs:dateTime" use="required">
+					<xs:annotation>
+						<xs:documentation>Timestamp when document is created
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="embeddedEventListType">
+		<xs:sequence>
+			<xs:element name="event" type="embeddedEventType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="basicEventListType">
+		<xs:sequence>
+			<xs:element name="event" type="basicEventType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="eventListType">
+		<xs:sequence>
+			<xs:element name="event" type="eventType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="eventGroupType" >
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="sequenceNumber" type="xs:short">
+					<xs:annotation>
+							<xs:documentation>The order the events with in a group should been viewed</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			
+			</xs:extension>
+				
+		</xs:simpleContent>
+		
+	</xs:complexType>
+	<xs:simpleType name="timecode">
+		<xs:restriction base="xs:string" />
+	</xs:simpleType>
+	<xs:complexType name="timeListType">
+		<xs:sequence>
+			<xs:element name="time" type="timeType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="timeType">
+		<xs:sequence>
+			<xs:element name="startTime" type="xs:dateTime" />
+			<xs:element name="endTime" type="xs:dateTime" />
+			<xs:element name="duration" type="timecode" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="timeSchedulingType" default="public" />
+		
+	</xs:complexType>
+	<xs:simpleType name="timeSchedulingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="public" />
+			<xs:enumeration value="planned" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+	

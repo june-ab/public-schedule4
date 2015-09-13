@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://common.tv.se/material/v4_0" targetNamespace="http://common.tv.se/material/v4_0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0">
+	<xs:element name="material" type="materialType">
+		<xs:annotation>
+			<xs:documentation>Root element for material object</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="materialType">
+		<xs:sequence>
+			<xs:element name="materialId" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>unique id for content, should include provider
+						name
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="contentIdRef" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>reference to content</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="materialType" type="materialTypeType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>type of material 
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="videoFormat" type="videoFormatType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>format for video, for example HD
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="audioList" type="audioListType" 
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of available audio for this material
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="aspectRatio" type="aspectRatioType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>aspect ratio for the material</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="subtitleList" type="subtitleListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of available subtitles</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accessibilityList" type="accessibilityListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of available accessibility types
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="materialReferenceList" type="materialReferenceListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of reference to physical material, could be
+						filenames or an url
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rightsList" type="rightsListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of rights for this material, each right is
+						for a rights period
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="timestamp" type="xs:dateTime" use="required">
+			<xs:annotation>
+				<xs:documentation>Timestamp when document is created
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="videoFormatType">
+		<xs:simpleContent>
+				<xs:extension base="videoFormatTypeType">
+				<xs:attribute name="threeD" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>Sets to true if video is in 3D or not. </xs:documentation>
+					</xs:annotation>	
+				</xs:attribute>
+					
+				</xs:extension>
+		</xs:simpleContent>			
+	</xs:complexType>
+	<xs:simpleType name="videoFormatTypeType">
+		<xs:restriction base="xs:string">
+				<xs:enumeration value="576i" />
+				<xs:enumeration value="720p" />
+				<xs:enumeration value="1080i" />
+				<xs:enumeration value="1080p" />
+				<xs:enumeration value="2160p" />
+				<xs:enumeration value="other" />
+			</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="aspectRatioType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="4:3" />
+			<xs:enumeration value="16:9" />
+			<xs:enumeration value="21:9" />
+			<xs:enumeration value="other" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="audioListType">
+		<xs:sequence>
+			<xs:element name="format" type="audioType" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>audio format, for example surround
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="audioType">
+		<xs:simpleContent>
+			<xs:extension base="audioFormatType">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="materialTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="program" />
+			<xs:enumeration value="trailer" />
+			<xs:enumeration value="other" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="audioFormatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="mono" />
+			<xs:enumeration value="stereo" />
+			<xs:enumeration value="surround" />
+			<xs:enumeration value="5.1" />
+			<xs:enumeration value="other" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="subtitleListType">
+		<xs:sequence>
+			<xs:element name="subtitle" type="subtitleType" minOccurs="0"
+				maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>reference to a subtitle item, for example a
+						teletext page or a subtitle file
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="subtitleType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="format" type="subtitleFormatType" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="subtitleFormatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="invision" />
+			<xs:enumeration value="teletext" />
+			<xs:enumeration value="dvb" />
+			<xs:enumeration value="other" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="accessibilityListType">
+		<xs:sequence>
+			<xs:element name="accessibilityList" type="accessibilityType"
+				minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>reference to a accessibility item, for example a
+						hearing impaired subtitle
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="accessibilityType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="format" type="accessibilityFormatType" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="accessibilityFormatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="hearingImpairedSubtitle" />
+			<xs:enumeration value="signLanguageInterpretation" />
+			<xs:enumeration value="audioDescription" />
+			<xs:enumeration value="spokenSubtitle" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="materialReferenceListType">
+		<xs:sequence>
+			<xs:element name="reference" type="materialReferenceType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="materialReferenceTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="video" />
+			<xs:enumeration value="audio" />
+			<xs:enumeration value="subtitle" />
+			<xs:enumeration value="graphics" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="materialReferenceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="materialReferenceTypeType">
+					<xs:annotation>
+						<xs:documentation>type of reference, for example video or audio. TeliaSonera isn't intressed in this for the moment 
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="duration" use="optional">
+					<xs:annotation>
+						<xs:documentation>duration in timecode for referenced material,
+							example 00:00:00:00
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="bitrate" use="optional">
+					<xs:annotation>
+						<xs:documentation>if applicable, bitrate for the material in bps
+						</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="rightsListType">
+		<xs:sequence>
+			<xs:element name="rights" type="rightsType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rightsType">
+		<xs:annotation>
+			<xs:documentation>DateTime in UTC</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="validFrom" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>start of period where right is valid
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validTo" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>end of period where right is valid
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="unlimitedPeriod" type="xs:boolean"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>indicates if there is a period or not. If true,
+						the rightsCategory is valid until otherwise said
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rightsCategoryList" type="rightsCategoryListType"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>list of right categories</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rightsCategoryListType">
+		<xs:sequence>
+			<xs:element name="rightsCategory" type="rightsCategoryType"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="rightsCategoryType">
+		<xs:sequence>
+			<xs:element name="deviceTypeList" type="deviceTypeListType">
+			</xs:element>
+			<xs:element name="priceList" type="priceListType"
+				minOccurs="0">
+			</xs:element>			
+			<xs:element name="timeshift" type="timeShiftRightsType"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="blockTransmission" type="xs:boolean" 
+				minOccurs="0">
+			</xs:element>	
+			<xs:element name="blockNVPR" type="xs:boolean" 
+				minOccurs="0">								
+			</xs:element>
+			<xs:element name="outputRights" type="outputRightsType" 
+				minOccurs="0">								
+			</xs:element>
+			
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="priceListType">
+		<xs:sequence>
+			<xs:element name="price" type="priceType"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="timeShiftRightsType">
+	    <xs:sequence>
+					<xs:element name="catchUpRights" type="catchUpRightsType"
+						minOccurs="0" maxOccurs="1">
+					</xs:element>				
+					<xs:element name="startOverRights" type="startOverRightsType"
+						minOccurs="0" maxOccurs="1">
+					</xs:element>
+	     </xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="deviceTypeListType">
+		<xs:sequence>
+			<xs:element name="deviceType" type="deviceTypeType" maxOccurs="6"></xs:element>
+		</xs:sequence>
+		
+	</xs:complexType>
+	<xs:complexType name="outputRightsType">
+		<xs:sequence>
+			<xs:element name="digitalOutputRights" type="digitalOutputRightsType"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="analogOutputRights" type="analogOutputRightsType"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="inHomeNetworkOutputRights" type="inHomeNetworkOutputRightsType"
+				minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="deviceTypeType">
+		<xs:annotation>
+			<xs:documentation>Controls the device type
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="web" />
+			<xs:enumeration value="mob" />
+			<xs:enumeration value="tab" />
+			<xs:enumeration value="stb" />
+			<xs:enumeration value="ott" />
+			<xs:enumeration value="console" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="digitalOutputRightsType">
+		<xs:annotation>
+			<xs:documentation>Controls the output source for digital sources
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="unrestricted" />
+			<xs:enumeration value="besteffort" />
+			<xs:enumeration value="restricted" />
+			<xs:enumeration value="disallow" />
+			<xs:enumeration value="downresolution" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="analogOutputRightsType">
+		<xs:choice>
+			<xs:element name="unrestricted" type="xs:boolean"></xs:element>
+			<xs:element name="besteffort" type="cgmsaType"></xs:element>
+			<xs:element name="restricted" type="cgmsaType"></xs:element>
+			<xs:element name="disallow" type="xs:boolean"> </xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="cgmsaType">
+		<xs:annotation>
+			<xs:documentation>CGMS-A is standardized through the IEC, CEA,
+				EIA-J
+				and ETS
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="copyfreely" />
+			<xs:enumeration value="copynomore" />
+			<xs:enumeration value="copyonce" />
+			<xs:enumeration value="copynever" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="inHomeNetworkOutputRightsType">
+		<xs:annotation>
+			<xs:documentation>Controls the output source for network services
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="unrestricted" />
+			<xs:enumeration value="disallow" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="catchUpRightsType">
+		<xs:attribute name="fastForward" type="xs:boolean" use="required"></xs:attribute>
+		<xs:attribute name="rewind" type="xs:boolean" use="required"></xs:attribute>
+		<xs:attribute name="pause" type="xs:boolean" use="required"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="startOverRightsType">
+		<xs:attribute name="fastForward" type="xs:boolean" use="required"></xs:attribute>
+		<xs:attribute name="rewind" type="xs:boolean" use="required"></xs:attribute>
+		<xs:attribute name="pause" type="xs:boolean" use="required"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="priceType">
+		<xs:simpleContent>
+			<xs:extension base="xs:float">
+				<xs:annotation>
+					<xs:documentation>If omitted the the price is set to 0
+					</xs:documentation>
+				</xs:annotation>
+				<xs:attribute name="currency" type="currencyType" use="required" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="currencyType">
+		<xs:annotation>
+			<xs:documentation>Currency Codes according to ISO 4217
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="3"></xs:length>
+			<xs:pattern value="[A-Z]+"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="materialListType">
+		<xs:sequence>
+			<xs:element name="material" type="materialType" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
