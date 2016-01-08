@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014 -->
+<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014, 2015, 2016 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns="http://common.tv.se/material/v4_1" targetNamespace="http://common.tv.se/material/v4_1"
 	elementFormDefault="qualified" attributeFormDefault="unqualified"
@@ -342,12 +342,15 @@
 
 	<xs:complexType name="timeShiftRightsType">
 	    <xs:sequence>
-					<xs:element name="catchUpRights" type="catchUpRightsType"
-						minOccurs="0" maxOccurs="1">
-					</xs:element>				
-					<xs:element name="startOverRights" type="startOverRightsType"
-						minOccurs="0" maxOccurs="1">
-					</xs:element>
+			<xs:element name="catchUpRights" type="catchUpRightsType"
+				minOccurs="0" maxOccurs="1">
+			</xs:element>				
+			<xs:element name="startOverRights" type="startOverRightsType"
+				minOccurs="0" maxOccurs="1">
+			</xs:element>
+			<xs:element name="downloadRights" type="downloadRightsType"
+				minOccurs="0" maxOccurs="1">
+			</xs:element>
 	     </xs:sequence>
 	</xs:complexType>
 
@@ -429,7 +432,6 @@
 			<xs:enumeration value="disallow" />
 		</xs:restriction>
 	</xs:simpleType>
-	
 	<xs:complexType name="catchUpRightsType">
 		<xs:attribute name="fastForward" type="xs:boolean" use="required"></xs:attribute>
 		<xs:attribute name="rewind" type="xs:boolean" use="required"></xs:attribute>
@@ -440,6 +442,66 @@
 		<xs:attribute name="rewind" type="xs:boolean" use="required"></xs:attribute>
 		<xs:attribute name="pause" type="xs:boolean" use="required"></xs:attribute>
 	</xs:complexType>
+	<xs:complexType name="downloadRightsType">
+		<xs:sequence>
+			<xs:element name="validFrom" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>start of period where right is valid
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="validTo" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>end of period where right is valid
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeToLiveBeforeFirstStart" type="timeToLiveType" minOccurs="0">  
+				<xs:annotation>
+					<xs:documentation>Time from the time of download which the material shall be available for the customer
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeToLiveAfterFirstStart" type="timeToLiveType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Time after first start that the customer may watch the material 
+					</xs:documentation>
+				</xs:annotation> 
+			</xs:element>
+			<xs:element name="maxAssets" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Maximum number of simultaneously downloaded files
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="timeToLiveType">
+		<xs:annotation>
+			<xs:documentation>"Time To Live" for locally stored material
+			</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:attribute name="unit" type="unitType" use="required" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name="unitType">
+		<xs:annotation>
+			<xs:documentation>Time unit in milliseconds, minutes, hours or days
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ms"></xs:enumeration>
+			<xs:enumeration value="min"></xs:enumeration>
+			<xs:enumeration value="hr"></xs:enumeration>
+			<xs:enumeration value="day"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
 	<xs:complexType name="priceType">
 		<xs:simpleContent>
 			<xs:extension base="xs:float">
