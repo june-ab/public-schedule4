@@ -180,7 +180,7 @@
 		<xs:sequence>
 			<xs:element name="title" type="originalTitleType"
 				maxOccurs="unbounded" />
-			<xs:element name="titleId" type="xs:string" minOccurs="1" />
+			<xs:element name="titleId" type="xs:string" minOccurs="0" />
 
 		</xs:sequence>
 	</xs:complexType>
@@ -228,8 +228,8 @@
 	</xs:complexType>
 	<xs:complexType name="genreType">
 		<xs:sequence>
-			<xs:element name="genre1" type="xs:string" minOccurs="1"/>
-			<xs:element name="genre2List" type="genre2ListType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="mainGenre" type="xs:string" minOccurs="1"/>
+			<xs:element name="subGenreList" type="subGenreListType" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 		<xs:attribute name="priority" type="xs:long">
 			<xs:annotation>
@@ -244,13 +244,13 @@
 		</xs:attribute>
 		<xs:attribute name="type" type="contextType" />          
 	</xs:complexType>
-	<xs:complexType name="genre2ListType">
+	<xs:complexType name="subGenreListType">
 		<xs:sequence>
-	 		<xs:element name="genre2" type="genre2Type" minOccurs="1"
+	 		<xs:element name="subGenre" type="subGenreType" minOccurs="1"
 				maxOccurs="50"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="genre2Type">
+	<xs:complexType name="subGenreType">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="priority" type="xs:long">
@@ -615,7 +615,9 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="sportType">
-		<xs:sequence>				
+		<xs:sequence>			
+			<xs:element name="sportsCategory" type="sportsCategoryType"
+				minOccurs="0" />		
 			<xs:element name="leagueOrCompetitionList" type="leagueOrCompetitionListType"
 				minOccurs="0" />
 			<xs:element name="roundOrEpisodeList" type="roundOrEpisodeListType"
@@ -624,6 +626,13 @@
 			<xs:element name="awayTeamList" type="teamListType" minOccurs="0" />
 			<xs:element name="venueList" type="venueListType" minOccurs="0" />
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sportsCategoryType">
+		<xs:simpleContent>
+			<xs:restriction base="simpleTextType">
+				<xs:maxLength value="40" />
+			</xs:restriction>
+		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="leagueOrCompetitionListType">
 		<xs:sequence>
