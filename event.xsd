@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_1"
-	targetNamespace="http://common.tv.se/event/v4_1" elementFormDefault="qualified"
+<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014, 2015, 2016-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_1_1"
+	targetNamespace="http://common.tv.se/event/v4_1_1" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
 	<xs:element name="event" type="eventType">
 		<xs:annotation>
