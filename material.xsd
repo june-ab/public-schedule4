@@ -192,7 +192,6 @@
 			<xs:enumeration value="ttml" />
 			<xs:enumeration value="srt" />
 			<xs:enumeration value="webvtt" />
-			<xs:enumeration value="ttml" />
 			<xs:enumeration value="pac" />
 			<xs:enumeration value="other" />
 		</xs:restriction>
