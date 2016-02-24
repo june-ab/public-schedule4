@@ -501,7 +501,7 @@
  		<xs:sequence>
  			<xs:element name="validFrom" type="xs:dateTime" minOccurs="0">
  				<xs:annotation>
- 					<xs:documentation>start of period when download may be initiated
+ 					<xs:documentation>Start of period when download may be initiated
  					</xs:documentation>
  				</xs:annotation>
  			</xs:element>
@@ -513,13 +513,13 @@
  			</xs:element>
  			<xs:element name="timeToLiveBeforeFirstStart" type="timeToLiveType" minOccurs="0">  
  				<xs:annotation>
- 					<xs:documentation>Time from the time of download which the material shall be available for the customer (material may be downloaded but then only kept for a specified maximum time)
+ 					<xs:documentation>time from the time of download which the title shall be available for the customer (title may be downloaded but then only kept for a specified maximum time)
  					</xs:documentation>
  				</xs:annotation>
  			</xs:element>
  			<xs:element name="timeToLiveAfterFirstStart" type="timeToLiveType" minOccurs="0">
  				<xs:annotation>
- 					<xs:documentation>Time after first start that the customer may watch the material (material may be limited to only be kept for a specified maximum time after first start)
+ 					<xs:documentation>time after first start that the customer may watch the title (title may be limited to only be kept for a specified maximum time after first start)
  					</xs:documentation>
  				</xs:annotation> 
  			</xs:element>
