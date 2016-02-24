@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Document developed by TeliaSonera, SVT and TV4 2009, 2010, 2011, 2014, 2015, 2016 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_1_1"
-	targetNamespace="http://common.tv.se/content/v4_1_1" elementFormDefault="qualified"
+<!-- Version 4.1.2, February 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
+<!-- Public Schedule is an open standard of interchanging TV metadata, broadcasts and rights. -->
+<!-- Public Schedule is free to use for all. Originally developed by SVT, TV4 and TeliaSonera. -->
+<!-- Now in development by broadcasters and distributors who are members of the Public Schedule group. -->
+<!-- Want to participate? Contact john.brander@june.se -->
+ <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_1_2"
+	targetNamespace="http://common.tv.se/content/v4_1_2" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
     <xs:element name="content" type="contentType">
 		<xs:annotation>
@@ -132,8 +136,7 @@
 			<xs:element name="mediaReferenceList" type="mediaReferenceListType"
 				minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>list of media references,TeliaSonera isn't
-						interested in any other media for the moment
+					<xs:documentation>list of media references
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -271,26 +274,21 @@
 	</xs:complexType>
 	<xs:complexType name="titleType">
 		<xs:simpleContent>
-
 			<xs:restriction base="textType">
 				<xs:maxLength value="300" />
 			</xs:restriction>
-
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="originalTitleType">
 		<xs:simpleContent>
 			<xs:extension base="titleType">
-
 				<xs:attribute name="original" type="xs:boolean">
 					<xs:annotation>
 						<xs:documentation>Marks a title as the original title
 						</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-
 			</xs:extension>
-
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="descriptionType">
@@ -299,8 +297,7 @@
 				<xs:attribute name="length" type="descriptionLengthType"
 					use="optional">
 					<xs:annotation>
-						<xs:documentation>TeliaSonera want's only one description per
-							context. If more is sent we look for "medium"
+						<xs:documentation>Description / synopsis of program
 						</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
@@ -469,9 +466,7 @@
 				<xs:attribute name="purpose">
 					<xs:simpleType>
 						<xs:annotation>
-							<xs:documentation>Set if the images are created for different
-								purposes. TeliaSonera want's only posters. If the attribute is
-								set all other will be dropped.
+							<xs:documentation>Specification of what type of image
 							</xs:documentation>
 						</xs:annotation>
 						<xs:restriction base="xs:string">
@@ -493,6 +488,8 @@
 						<xs:documentation>code in ISO 639-2</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
+				<xs:attribute name="checkSumType" type="checkSumTypeType" />
+				<xs:attribute name="checkSumValue" type="xs:string" />
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -502,22 +499,20 @@
 			<xs:element name="captionList" type="captionListType"
 				minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>TeliaSonera hasn't got any implementation for this at moment
+					<xs:documentation>Text describing the image (what the image symbolizes)
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="copyRightList" type="copyRightsListType"
 				minOccurs="0" maxOccurs="unbounded">
 				<xs:annotation>
-					<xs:documentation>TeliaSonera hasn't got any implementation for this at moment
+					<xs:documentation>Information of copy rights belonging to the image
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="type" type="contextType" default="content"></xs:attribute>
-
 	</xs:complexType>
-
 	<xs:complexType name="imageListType">
 		<xs:sequence>
 			<xs:element name="image" type="imageType" minOccurs="0"
@@ -544,25 +539,19 @@
 						<xs:documentation>code in ISO 639-2</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-
-
 	<xs:complexType name="mediaReferenceListType">
 		<xs:sequence>
 			<xs:element name="reference" type="mediaReferenceType"
 				minOccurs="0" maxOccurs="unbounded" />
-
-
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="mediaReferenceType">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="type" type="contextType">
-
 				</xs:attribute>
 				<xs:attribute name="priority" type="xs:int">
 					<xs:annotation>
@@ -606,7 +595,6 @@
 					<xs:attribute name="pattern" type="xs:string">
 						<xs:annotation>
 							<xs:documentation>pattern name, describes type of tree.
-								TeliaSonera hasn't got any implementation for this at moment
 							</xs:documentation>
 						</xs:annotation>
 					</xs:attribute>
@@ -773,5 +761,23 @@
 		</xs:sequence>
 		<xs:attribute name="type" type="contextType" />
 	</xs:complexType>
+	<xs:complexType name="checkSumType">
+	    <xs:simpleContent>
+	    	<xs:extension base="xs:string">
+	        	<xs:attribute name="type" type="checkSumTypeType"></xs:attribute>
+	    	</xs:extension>
+	    </xs:simpleContent>
+	  </xs:complexType>
+	  <xs:simpleType name="checkSumTypeType">
+		<xs:annotation>
+			<xs:documentation>Different type of checksums
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="md5sum" />
+			<xs:enumeration value="sha1" />
+			<xs:enumeration value="other" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>
