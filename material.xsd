@@ -507,7 +507,7 @@
  			</xs:element>
  			<xs:element name="validTo" type="xs:dateTime" minOccurs="0">
  				<xs:annotation>
- 					<xs:documentation>end of period when download may no longer be done (does not affect viewing of the content)
+ 					<xs:documentation>end of period when download may no longer be done (does not affect viewing of the title)
  					</xs:documentation>
  				</xs:annotation>
  			</xs:element>
