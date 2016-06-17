@@ -4,7 +4,7 @@
 <!-- Public Schedule is free to use for all. Originally developed by SVT, TV4 and TeliaSonera. -->
 <!-- Now in development by broadcasters and distributors who are members of the Public Schedule group. -->
 <!-- Want to participate? Contact john.brander@june.se -->
-<xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:content="http://common.tv.se/content/v4_1_2" xmlns:material="http://common.tv.se/material/v4_1_2"
 	xmlns:event="http://common.tv.se/event/v4_1_2" xmlns="http://common.tv.se/publish/v4_1_2"
 	targetNamespace="http://common.tv.se/publish/v4_1_2" elementFormDefault="qualified"
