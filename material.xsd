@@ -470,7 +470,7 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:length value="3"></xs:length>
-			<xs:pattern value="[A-Z]"></xs:pattern>
+			<xs:pattern value="[A-Z]+"></xs:pattern>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="materialListType">
