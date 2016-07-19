@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Version 4.1.2, February 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
+<!-- Version 4.2.0, July 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
 <!-- Public Schedule is an open standard for interchanging TV metadata, broadcasts and rights. -->
 <!-- Public Schedule is free to use for all. Originally developed by SVT, TV4 and TeliaSonera. -->
 <!-- Now in development by broadcasters and distributors who are members of the Public Schedule group. -->
 <!-- Want to participate? Contact john.brander@june.se -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_1_2"
-	targetNamespace="http://common.tv.se/event/v4_1_2" elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/event/v4_2_0"
+	targetNamespace="http://common.tv.se/event/v4_2_0" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
 	<xs:element name="event" type="eventType">
 		<xs:annotation>
 			<xs:documentation>root node of event</xs:documentation>
 		</xs:annotation>
 	</xs:element>
-	<!-- types -->
 	<xs:complexType name="basicEventType">
 		<xs:sequence>
 			<xs:element name="eventId" type="xs:string">
@@ -41,15 +40,13 @@
 			<xs:element name="live" type="xs:boolean" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>indicates if this event is live.
-					TeliaSonera hasn't got any implementation for this at moment
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="hidden" type="xs:boolean" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>indicates if this event is hidden, i.e. if it
-						should not be public. 
-						TeliaSonera hasn't got any implementation for this at moment
+						should not be public, may for example be used for morning shows with parts, where all the parts are hidden under the name of the morning show 
 						</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -95,17 +92,14 @@
 						<xs:documentation>code in ISO 639-2</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	
 	<xs:complexType name="embeddedEventType">
 	<xs:annotation>
-		<xs:documentation>TeliaSonera handles embeddedEvents the same way as ordinary events. 
+		<xs:documentation>
 		</xs:documentation>
 	</xs:annotation>
-	
 		<xs:complexContent>
 			<xs:extension base="basicEventType">
 				<xs:sequence>
@@ -125,9 +119,8 @@
 					<xs:element name="previousEventList" type="basicEventListType"
 						minOccurs="0">
 						<xs:annotation>
-							<xs:documentation>list if events that occured in time before
-								current event, i.e. same contentId. TeliaSonera hasn't 
-								got any implementation for this at moment
+							<xs:documentation>list of events that occured in time before
+								current event, i.e. earlier broadcasts of the same contentId. 
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
@@ -135,8 +128,7 @@
 						minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>list of events that occurred in time after
-								current event, i.e. same contentId. TeliaSonera hasn't got 
-								any implementation for this at moment
+								current event, i.e. coming reruns of the same contentId. 
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
@@ -153,6 +145,12 @@
 						<xs:annotation>
 							<xs:documentation>list of events that occurs as part of current
 								event.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="customPropertyList" type="customPropertyListType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>List of custom properties
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
@@ -247,7 +245,6 @@
 			<xs:element name="duration" type="timecode" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="type" type="timeSchedulingType" default="public" />
-		
 	</xs:complexType>
 	<xs:simpleType name="timeSchedulingType">
 		<xs:restriction base="xs:string">
@@ -255,5 +252,60 @@
 			<xs:enumeration value="planned" />
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="contextType">
+		<xs:annotation>
+			<xs:documentation>type of entity the metadata is refered to, content if
+				it is the content entity itself, series or season if the metadata
+				refers to series or season
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="content" />
+			<xs:enumeration value="series" />
+			<xs:enumeration value="season" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="customPropertyListType">
+		<xs:sequence>
+			<xs:element name="customProperty" type="customPropertyType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						custom properties, defined as sets of key-value pairs
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="customPropertyType">
+		<xs:sequence>
+			<xs:element name="propertyValue" type="propertyValueType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string" use="required"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="propertyValueType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="order" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>
+							unique order where are there are a number of values for the same key, 0 is the first one (highest priority)
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="contextType" default="content">
+					<xs:annotation>
+						<xs:documentation>
+							different values for key depending on series/season/content level
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>
 	

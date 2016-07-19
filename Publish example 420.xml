@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<p:publish timestamp="2014-06-16T08:10:00.350Z" xmlns:p="http://common.tv.se/publish/v4_2_0" xmlns:c="http://common.tv.se/content/v4_2_0" xmlns:m="http://common.tv.se/material/v4_2_0" xmlns:e="http://common.tv.se/event/v4_2_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://common.tv.se/publish/v4_2_0 file:///420/publish.xsd">
+	<p:providerId>se.canalplus</p:providerId>
+	<p:contentList>
+		<c:content timestamp="2014-06-16T08:10:00.350Z">
+			<c:contentId>se.canalplus.content.177170</c:contentId>
+			<c:productionYear>2011</c:productionYear>
+			<c:countryOfOriginList>
+				<c:country>US</c:country>
+			</c:countryOfOriginList>
+			<c:titleList>
+				<c:title language="swe" type="content">200-årsmannen</c:title>
+				<c:title language="den" type="content">Robotmennesket</c:title>
+				<c:title language="fin" type="content">Robotin elämää</c:title>
+				<c:title language="eng" type="content" original="true">Bicentennial man</c:title>
+				<c:titleId>se.canalplus.title.177170</c:titleId>
+			</c:titleList>
+			<c:genericTitleList>
+				<c:title language="swe" type="content">200-årsmannen</c:title>
+				<c:title language="den" type="content">Robotmennesket</c:title>
+				<c:title language="fin" type="content">Robotin elämää</c:title>
+				<c:title language="eng" type="content">Bicentennial man</c:title>
+			</c:genericTitleList>
+			<c:descriptionList>
+				<c:description length="tiny"  language="swe" type="content">Amerikansk komedi från 2011.</c:description>
+				<c:description length="medium"  language="swe" type="content">Familjerna Walling och Ostroff har ett nära förhållande. När den förlorade Ostroffdottern Nina återvänder hem efter flera år, hoppas man att hon ska intressera sig för sonen Toby i Walling-familjen. Allt går inte som planerat, för det uppstår i stället gnistor mellan Nina och Tobys pappa David.</c:description>
+				<c:description length="tiny"  language="eng" type="content">American comedy from 2011.</c:description>
+				<c:description language="eng" type="content">The enduring friendship between the Walling and Ostroff families is tested when Nina, the prodigal Ostroff daughter, returns home for the holidays after a five-year absence and enters into an affair with David, head of the Walling family.</c:description>
+			</c:descriptionList>
+			<c:genreList>   
+				<c:genre language="swe" type="content" priority="1">
+					<c:mainGenre>Komedi</c:mainGenre>
+				</c:genre>
+				<c:genre language="swe" type="content" priority="2">
+					<c:mainGenre>Romantik</c:mainGenre>
+				</c:genre>
+			</c:genreList>
+			<c:dvbGenre>
+				<c:nibble1>0</c:nibble1>
+				<c:nibble2>4</c:nibble2>
+				<c:userByte>123</c:userByte>
+			</c:dvbGenre>
+			<c:keywordList>
+				<c:keyword language="swe">Familj</c:keyword>
+				<c:keyword language="swe">Landsbygd</c:keyword>
+			</c:keywordList>
+			<c:creditList>
+				<c:credit>
+					<c:name>Alia Shawkat</c:name>
+					<c:rolename>Vanessa</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Hugh Laurie</c:name>
+					<c:rolename>David</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Catherine Keener</c:name>
+					<c:rolename>Page</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Julian Farino</c:name>
+					<c:function>director</c:function>
+				</c:credit>
+			</c:creditList>
+			<c:ratingList>
+				<c:rating type="content">
+					<c:value>8.7</c:value>			
+					<c:source>imdb</c:source>
+				</c:rating>  
+			</c:ratingList>
+			<c:imageList>
+				<c:image type="content">
+					<c:imageRef orientation="portrait" width="708" height="1024" priority="0">http://cdn01.img.akamai.net/f889531f-217d-4a99-ba7d-f1636332521d/29.png</c:imageRef>
+				</c:image>
+				<c:image type="content">
+					<c:imageRef orientation="landscape" width="1920" height="1080" priority="0">http://cdn01.img.akamai.net/klklijara/jkada.jpg</c:imageRef>
+				</c:image>
+			</c:imageList>
+			<c:categoryList>
+				<c:category priority="0">
+					<c:treeNode order="0">CANAL+ Play</c:treeNode>
+					<c:treeNode order="1">Film</c:treeNode>
+					<c:treeNode order="2">Drama</c:treeNode>
+				</c:category>
+			</c:categoryList>
+			<c:parentalRating>10</c:parentalRating>
+		</c:content>
+	</p:contentList>
+	<p:materialList>
+		<m:material timestamp="2014-06-16T08:10:00.350Z">
+			<m:materialId>se.canalplus.material.62114</m:materialId>
+			<m:contentIdRef>se.canalplus.content.177170</m:contentIdRef>
+			<m:videoFormat>576i</m:videoFormat>
+			<m:audioList>
+				<m:format language="swe">stereo</m:format>
+			</m:audioList>
+			<m:aspectRatio>16:9</m:aspectRatio>
+			<m:materialReferenceList>
+				<m:reference duration="01:26:00:00" type="video">/3008_2465505.ism</m:reference>
+			</m:materialReferenceList>
+			<m:rightsList>
+				<m:rights>
+					<m:validFrom>2013-10-31T23:00:00Z</m:validFrom>
+					<m:validTo>2014-10-30T23:00:00Z</m:validTo>
+					<m:unlimitedPeriod>false</m:unlimitedPeriod>
+					<m:rightsCategoryList>
+						<m:rightsCategory>
+							<m:deviceTypeList>
+								<m:deviceType>web</m:deviceType>
+							</m:deviceTypeList>
+							<m:priceList>	
+								<m:price currency="SEK">0</m:price>
+							</m:priceList> 
+						</m:rightsCategory>
+					</m:rightsCategoryList>
+				</m:rights>
+			</m:rightsList>
+		</m:material>
+		<m:material timestamp="2014-06-16T08:10:00.350Z">
+			<m:materialId>se.canalplus.material.62114</m:materialId>
+			<m:contentIdRef>se.canalplus.content.177170</m:contentIdRef>
+			<m:videoFormat>576i</m:videoFormat>
+			<m:audioList>
+				<m:format language="swe">stereo</m:format>
+			</m:audioList>
+			<m:aspectRatio>16:9</m:aspectRatio>
+			<m:materialReferenceList>
+				<m:reference duration="01:26:00:00" type="video">/3008_2465505.m3u8</m:reference>
+			</m:materialReferenceList>
+			<m:rightsList>
+				<m:rights>
+					<m:validFrom>2013-10-31T23:00:00Z</m:validFrom>
+					<m:validTo>2014-10-30T23:00:00Z</m:validTo>
+					<m:unlimitedPeriod>false</m:unlimitedPeriod>
+					<m:rightsCategoryList>
+						<m:rightsCategory>
+							<m:deviceTypeList>
+								<m:deviceType>mob</m:deviceType>
+								<m:deviceType>tab</m:deviceType>
+							</m:deviceTypeList>
+							<m:priceList>	
+								<m:price currency="SEK">0</m:price>
+							</m:priceList> 
+						</m:rightsCategory>
+					</m:rightsCategoryList>
+				</m:rights>
+			</m:rightsList>
+		</m:material>
+		<m:material timestamp="2014-06-16T08:10:00.350Z">
+			<m:materialId>se.canalplus.material.621143</m:materialId>
+			<m:contentIdRef>se.canalplus.content.177170</m:contentIdRef>
+			<m:materialType>trailer</m:materialType>
+			<m:videoFormat>576i</m:videoFormat>
+			<m:audioList>
+				<m:format language="swe">stereo</m:format>
+			</m:audioList>
+			<m:aspectRatio>16:9</m:aspectRatio>
+			<m:materialReferenceList>
+				<m:reference duration="00:03:00:00" type="video">/3008_T_2465505.ism</m:reference>
+			</m:materialReferenceList>
+			<m:rightsList>
+				<m:rights>
+					<m:validFrom>2013-10-31T23:00:00Z</m:validFrom>
+					<m:validTo>2014-10-30T23:00:00Z</m:validTo>
+					<m:unlimitedPeriod>false</m:unlimitedPeriod>
+					<m:rightsCategoryList>
+						<m:rightsCategory>
+							<m:deviceTypeList>
+								<m:deviceType>web</m:deviceType>
+							</m:deviceTypeList>
+							<m:priceList>	
+								<m:price currency="SEK">0</m:price>
+							</m:priceList> 
+						</m:rightsCategory>
+					</m:rightsCategoryList>
+				</m:rights>
+			</m:rightsList>
+		</m:material>
+	</p:materialList>
+	<p:channelId>se.canalplus.svod</p:channelId>
+</p:publish>

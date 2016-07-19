@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Version 4.1.2, February 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
+<!-- Version 4.2.0, July 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
 <!-- Public Schedule is an open standard for interchanging TV metadata, broadcasts and rights. -->
 <!-- Public Schedule is free to use for all. Originally developed by SVT, TV4 and TeliaSonera. -->
 <!-- Now in development by broadcasters and distributors who are members of the Public Schedule group. -->
 <!-- Want to participate? Contact john.brander@june.se -->
- <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_1_2"
-	targetNamespace="http://common.tv.se/content/v4_1_2" elementFormDefault="qualified"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://common.tv.se/content/v4_2_0"
+	targetNamespace="http://common.tv.se/content/v4_2_0" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
-    <xs:element name="content" type="contentType">
+	<xs:element name="content" type="contentType">
 		<xs:annotation>
 			<xs:documentation>Root element for content object</xs:documentation>
 		</xs:annotation>
@@ -16,8 +16,7 @@
 		<xs:sequence>
 			<xs:element name="contentId" type="xs:string">
 				<xs:annotation>
-					<xs:documentation>unique id for content, should include provider
-						name
+					<xs:documentation>unique id for content, should include provider name
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
@@ -171,6 +170,12 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
+			<xs:element name="customPropertyList" type="customPropertyListType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>List of custom properties
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="timestamp" type="xs:dateTime" use="required">
 			<xs:annotation>
@@ -184,7 +189,6 @@
 			<xs:element name="title" type="originalTitleType"
 				maxOccurs="unbounded" />
 			<xs:element name="titleId" type="xs:string" minOccurs="0" />
-
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="genericTitleListType">
@@ -236,7 +240,7 @@
 		</xs:sequence>
 		<xs:attribute name="priority" type="xs:long">
 			<xs:annotation>
- 				<xs:documentation>lower priority number means higher importance
+				<xs:documentation>lower priority number means higher importance
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
@@ -249,7 +253,7 @@
 	</xs:complexType>
 	<xs:complexType name="subGenreListType">
 		<xs:sequence>
-	 		<xs:element name="subGenre" type="subGenreType" minOccurs="1"
+			<xs:element name="subGenre" type="subGenreType" minOccurs="1"
 				maxOccurs="50"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -327,7 +331,7 @@
 		<xs:annotation>
 			<xs:documentation>length (and content) of the description
 				e.g, tiny
-				may be 1-25 characters, short 26-140,medium 141-240, long
+				may be 1-25 characters, short 26-140, medium 141-240, long
 				241-999,
 				extended > 1000
 			</xs:documentation>
@@ -580,6 +584,11 @@
 												</xs:documentation>
 											</xs:annotation>
 										</xs:attribute>
+										<xs:attribute name="language" type="xs:language">
+											<xs:annotation>
+												<xs:documentation>code in ISO 639-2</xs:documentation>
+											</xs:annotation>
+										</xs:attribute>
 									</xs:extension>
 								</xs:simpleContent>
 							</xs:complexType>
@@ -706,7 +715,6 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<!-- types -->
 	<xs:complexType name="contentListType">
 		<xs:sequence>
 			<xs:element name="content" type="contentType" minOccurs="0"
@@ -736,8 +744,8 @@
 			<xs:element name="provider" type="xs:string" minOccurs="1"
 				maxOccurs="1">
 				<xs:annotation>
-					<xs:documentation>Who is the provides for the extend data that can
-						be used for this content. It can for example be score24.com or
+					<xs:documentation>Who is the provider for the extend data that can
+						be used for this content. For example score24.com or
 						IMDB.com
 					</xs:documentation>
 				</xs:annotation>
@@ -753,7 +761,7 @@
 			<xs:element name="uri" type="xs:string" minOccurs="0"
 				maxOccurs="1">
 				<xs:annotation>
-					<xs:documentation>Resource to use for reach the data at the
+					<xs:documentation>Resource to use to reach the data at the
 						provider
 					</xs:documentation>
 				</xs:annotation>
@@ -762,13 +770,13 @@
 		<xs:attribute name="type" type="contextType" />
 	</xs:complexType>
 	<xs:complexType name="checkSumType">
-	    <xs:simpleContent>
-	    	<xs:extension base="xs:string">
-	        	<xs:attribute name="type" type="checkSumTypeType"></xs:attribute>
-	    	</xs:extension>
-	    </xs:simpleContent>
-	  </xs:complexType>
-	  <xs:simpleType name="checkSumTypeType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" type="checkSumTypeType"></xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="checkSumTypeType">
 		<xs:annotation>
 			<xs:documentation>Different type of checksums
 			</xs:documentation>
@@ -779,5 +787,46 @@
 			<xs:enumeration value="other" />
 		</xs:restriction>
 	</xs:simpleType>
-
+	<xs:complexType name="customPropertyListType">
+		<xs:sequence>
+			<xs:element name="customProperty" type="customPropertyType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>
+						custom properties, defined as sets of key-value pairs
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="customPropertyType">
+		<xs:sequence>
+			<xs:element name="propertyValue" type="propertyValueType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="key" type="xs:string" use="required"></xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="propertyValueType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="language" type="xs:language">
+					<xs:annotation>
+						<xs:documentation>code in ISO 639-2</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="order" type="xs:int">
+					<xs:annotation>
+						<xs:documentation>
+							unique order where are there are a number of values for the same key, 0 is the first one (highest priority)
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="contextType" default="content">
+					<xs:annotation>
+						<xs:documentation>
+							different values for key depending on series/season/content level
+						</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>

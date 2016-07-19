@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Version 4.1.2, February 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
+<!-- Version 4.2.0, July 2016. Find the latest release on https://github.com/june-ab/public-schedule4 -->
 <!-- Public Schedule is an open standard for interchanging TV metadata, broadcasts and rights. -->
 <!-- Public Schedule is free to use for all. Originally developed by SVT, TV4 and TeliaSonera. -->
 <!-- Now in development by broadcasters and distributors who are members of the Public Schedule group. -->
 <!-- Want to participate? Contact john.brander@june.se -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:content="http://common.tv.se/content/v4_1_2" xmlns:event="http://common.tv.se/event/v4_1_2"
-	xmlns:material="http://common.tv.se/material/v4_1_2" xmlns="http://common.tv.se/schedule/v4_1_2"
-	targetNamespace="http://common.tv.se/schedule/v4_1_2" elementFormDefault="qualified"
+	xmlns:content="http://common.tv.se/content/v4_2_0" xmlns:event="http://common.tv.se/event/v4_2_0"
+	xmlns:material="http://common.tv.se/material/v4_2_0" xmlns="http://common.tv.se/schedule/v4_2_0"
+	targetNamespace="http://common.tv.se/schedule/v4_2_0" elementFormDefault="qualified"
 	attributeFormDefault="unqualified" version="1.0">
-	<xs:import namespace="http://common.tv.se/content/v4_1_2"
+	<xs:import namespace="http://common.tv.se/content/v4_2_0"
 		schemaLocation="content.xsd" />
-	<xs:import namespace="http://common.tv.se/event/v4_1_2"
+	<xs:import namespace="http://common.tv.se/event/v4_2_0"
 		schemaLocation="event.xsd" />
-	<xs:import namespace="http://common.tv.se/material/v4_1_2"
+	<xs:import namespace="http://common.tv.se/material/v4_2_0"
 		schemaLocation="material.xsd" />
 	<xs:element name="schedule">
 		<xs:annotation>

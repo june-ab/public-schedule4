@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<s:schedule timestamp="2014-06-16T08:10:00.350Z" xmlns:s="http://common.tv.se/schedule/v4_2_0" xmlns:c="http://common.tv.se/content/v4_2_0" xmlns:m="http://common.tv.se/material/v4_2_0" xmlns:e="http://common.tv.se/event/v4_2_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://common.tv.se/schedule/v4_2_0 file:///420/schedule.xsd">
+	<s:from>2015-08-13T03:00:00.000Z</s:from>	
+	<s:to>2015-08-14T05:05:00.000Z</s:to>
+	<s:providerId>se.canalplus</s:providerId>
+	<s:contentList>
+		<c:content timestamp="2015-08-07T08:28:18.000Z">
+			<c:contentId>se.canalplus.content.7003100011632825</c:contentId>
+			<c:productionYear>2014</c:productionYear>
+			<c:countryOfOriginList>
+				<c:country>US</c:country>
+			</c:countryOfOriginList>
+			<c:titleList>
+				<c:title original="true" type="content" language="eng">Drumline: A New Beat</c:title>
+				<c:titleId>se.canalplus.titleid.231407</c:titleId>
+			</c:titleList>
+			<c:genericTitleList>
+				<c:title type="content" language="eng">Drumline: A New Beat</c:title>
+			</c:genericTitleList>
+			<c:descriptionList>
+				<c:description length="tiny" type="content" language="nor">Amerikansk drama fra 2014.</c:description>
+				<c:description length="medium" type="content" language="nor">Brooklyn-jenta Dani drømmer om å lede trommeseksjonen i det legendariske korpset ved A&amp;T University i Atlanta. Men det blir en lang og vanskelig reise, med konkurrenter, juks og kjærlighet langs veien.</c:description>
+				<c:description length="tiny" type="content" language="swe">Amerikanskt drama från 2014.</c:description>
+				<c:description length="medium" type="content" language="swe">Brooklyntjejen Dani drömmer om att leda trumsektionen i den legendariska musikkåren på A&amp;T University i Atlanta. Men det blir en snårig resa, med konkurrens, fult spel och kärlek längs vägen.</c:description>
+				<c:description length="tiny" type="content" language="fin">Draama (USA 2014).</c:description>
+				<c:description length="medium" type="content" language="fin">Musiikkidraama nuoresta rumpalista, joka satsaa kaiken saadakseen paikan atlantalaisen yliopiston legendaarisesta soittokunnasta.</c:description>
+				<c:description length="tiny" type="content" language="dan">Amerikansk drama fra 2014.</c:description>
+				<c:description length="medium" type="content" language="dan">Brooklynpigen Dani drømmer om at lede trommesektionen i det legendariske marchband på A&amp;T University i Atlanta. Vejen til målet er dog ingen dans på roser, men byder på hård konkurrence og beskidte spil. Ambitionerne er tårnhøje, men alligvel bliver der også plads til kærligheden undervejs.</c:description>
+			</c:descriptionList>
+			<c:genreList>
+				<c:genre type="content" language="swe" priority="0">
+					<c:mainGenre>Drama</c:mainGenre>
+				</c:genre>
+				<c:genre type="content" language="swe" priority="1">
+					<c:mainGenre>Musik</c:mainGenre>
+					<c:subGenreList>
+						<c:subGenre>Musikal</c:subGenre>
+					</c:subGenreList>	
+				</c:genre>
+			</c:genreList>
+			<c:dvbGenre>
+				<c:nibble1>1</c:nibble1>
+				<c:nibble2>7</c:nibble2>
+				<c:userByte>401</c:userByte>
+			</c:dvbGenre>
+			<c:keywordList>
+				<c:keyword language="swe" type="content">trumma</c:keyword>
+				<c:keyword language="swe" type="content">kärlek</c:keyword>
+				<c:keyword language="dan" type="content">tromme</c:keyword>
+				<c:keyword language="dan" type="content">kærlighed</c:keyword>
+				<c:keyword language="nor" type="content">tromme</c:keyword>
+				<c:keyword language="nor" type="content">kjærlighet</c:keyword>
+				<c:keyword language="fin" type="content">rumpu</c:keyword>
+				<c:keyword language="fin" type="content"> rakkaus </c:keyword>
+			</c:keywordList> 
+			<c:creditList>
+				<c:credit>
+					<c:name>Bille Woodruff</c:name>
+					<c:function>director</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Alexandra Shipp</c:name>
+					<c:rolename>Dani</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Nick Cannon</c:name>
+					<c:rolename>Devon Miles</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Leonard Roberts</c:name>
+					<c:rolename>Sean Taylor</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+				<c:credit>
+					<c:name>Letoya Luckett</c:name>
+					<c:rolename>Dr. Nia Phillips</c:rolename>
+					<c:function>actor</c:function>
+				</c:credit>
+			</c:creditList>
+			<c:ratingList>
+				<c:rating type="content">
+					<c:value>3.0</c:value>
+					<c:source>TT</c:source>
+				</c:rating>
+				<c:rating type="content">
+					<c:value>7.2</c:value>
+					<c:source>imdb</c:source>
+				</c:rating>  
+			</c:ratingList>
+			<c:imageList>
+				<c:image type="content">
+					<c:imageRef language="swe" purpose="poster" priority="0" unit="px" height="7418" width="5564" orientation="portrait">http://x.x.x.x/images/110963-p.jpg</c:imageRef>
+				</c:image>
+				<c:image type="content">
+					<c:imageRef language="swe" purpose="poster" priority="0" unit="px" height="7418" width="8393" orientation="landscape">http://x.x.x.x/images/110963.jpg</c:imageRef>
+				</c:image>
+			</c:imageList>
+			<c:categoryList>
+				<c:category priority="0">
+					<c:treeNode language="swe" order="0">C More Play</c:treeNode>
+					<c:treeNode language="swe" order="1">Film</c:treeNode>
+					<c:treeNode language="swe" order="2">Drama</c:treeNode>
+					<c:treeNode language="fin" order="0">C More Play</c:treeNode>
+					<c:treeNode language="fin" order="1">Filmi</c:treeNode>
+					<c:treeNode language="fin" order="2">Draama</c:treeNode>
+				</c:category>
+			</c:categoryList>
+			<c:parentalRating>15</c:parentalRating>
+			<c:externalReferenceList>
+				<c:externalReference type="content">
+					<c:provider>IMDB</c:provider>
+					<c:id>tt3520698</c:id>
+					<c:uri>http://www.imdb.com/title/tt3520698/?ref_=fn_al_tt_1</c:uri>
+				</c:externalReference>
+			</c:externalReferenceList>
+			<c:customPropertyList> 
+				<c:customProperty key="Property1">
+					<c:propertyValue>Some generic value</c:propertyValue>
+				</c:customProperty>
+				<c:customProperty key="Property2">
+					<c:propertyValue  language="swe">Some swedish value</c:propertyValue>
+					<c:propertyValue  language="nor">Some norwegian value</c:propertyValue>
+				</c:customProperty>
+				<c:customProperty key="Property3">
+					<c:propertyValue order="0">First value</c:propertyValue >
+					<c:propertyValue order="1">Second  value</c:propertyValue>
+					<c:propertyValue order="2">Third value</c:propertyValue>
+				</c:customProperty>
+				<c:customProperty key="Property4">
+					<c:propertyValue type="series">Another generic series value</c:propertyValue>
+					<c:propertyValue type="season">Another generic season value</c:propertyValue>
+					<c:propertyValue type="content">Another generic content value</c:propertyValue>
+				</c:customProperty>
+			</c:customPropertyList>
+		</c:content>
+	</s:contentList>
+
+	<s:materialList>
+		<m:material timestamp="2015-08-07T08:28:18.000Z">
+			<m:materialId>se.canalplus.material.1000080011632825</m:materialId>
+			<m:contentIdRef>se.canalplus.content.7003100011632825</m:contentIdRef>
+			<m:videoFormat>576i</m:videoFormat>
+			<m:audioList>
+				<m:format language="swe">stereo</m:format>
+			</m:audioList>
+			<m:aspectRatio>16:9</m:aspectRatio>
+			<m:subtitleList>
+				<m:subtitle language="swe" format="invision"/>
+			</m:subtitleList>
+			<m:accessibilityList>
+				<m:accessibility language="swe" format="spokenSubtitle"/>
+			</m:accessibilityList>
+			<m:rightsList>
+				<m:rights>
+					<m:validFrom>2012-11-16T10:00:00.002Z</m:validFrom>
+					<m:validTo>2012-11-16T10:00:00.002Z</m:validTo>
+					<m:rightsCategoryList>
+						<m:rightsCategory>
+							<m:deviceTypeList>
+								<m:deviceType>mob</m:deviceType>
+								<m:deviceType>tab</m:deviceType>
+								<m:deviceType>web</m:deviceType>
+							</m:deviceTypeList>
+							<m:timeshift>
+								<m:startOverRights fastForward="true" rewind="true" pause="false" />
+							</m:timeshift>
+							<m:blockTransmission>true</m:blockTransmission>
+						</m:rightsCategory>
+					</m:rightsCategoryList>
+				</m:rights>
+				<m:rights>
+					<m:validFrom>2012-11-16T10:00:00.002Z</m:validFrom>
+					<m:validTo>2012-11-16T10:00:00.002Z</m:validTo>
+					<m:rightsCategoryList>
+						<m:rightsCategory>
+							<m:deviceTypeList>
+								<m:deviceType>stb</m:deviceType>
+							</m:deviceTypeList>
+							<m:timeshift>
+								<m:catchUpRights fastForward="true" rewind="true" pause="true" />
+							</m:timeshift>
+						</m:rightsCategory>
+					</m:rightsCategoryList>
+				</m:rights>
+			</m:rightsList>
+			<m:customPropertyList> 
+				<m:customProperty key="Property1">
+					<m:propertyValue>Some generic value</m:propertyValue>
+				</m:customProperty>
+				<m:customProperty key="Property2">
+					<m:propertyValue  language="swe">Some swedish value</m:propertyValue>
+					<m:propertyValue  language="nor">Some norwegian value</m:propertyValue>
+				</m:customProperty>
+				<m:customProperty key="Property3">
+					<m:propertyValue order="0">First value</m:propertyValue >
+					<m:propertyValue order="1">Second  value</m:propertyValue>
+					<m:propertyValue order="2">Third value</m:propertyValue>
+				</m:customProperty>
+				<m:customProperty key="Property4">
+					<m:propertyValue type="series">Another generic series value</m:propertyValue>
+					<m:propertyValue type="season">Another generic season value</m:propertyValue>
+					<m:propertyValue type="content">Another generic content value</m:propertyValue>
+				</m:customProperty>
+			</m:customPropertyList>
+		</m:material>
+	</s:materialList>	
+	<s:eventList>
+		<e:event timestamp="2015-08-07T08:28:18.000Z">		
+			<e:eventId>se.canalplus.event.1000080011632825</e:eventId>
+			<e:channelId>se.canalplus.channel.8</e:channelId>
+			<e:descriptionList>
+				<e:description language="swe">Textat på text-tv sidan 793.</e:description>
+			</e:descriptionList>
+			<e:rerun>false</e:rerun>
+			<e:live>false</e:live>
+			<e:highlightList>
+				<e:highlight>
+					<e:category>1</e:category>
+					<e:priority>5</e:priority>
+				</e:highlight>
+			</e:highlightList>
+			<e:premiere>true</e:premiere>
+			<e:timeList>			
+				<e:time type="planned">
+					<e:startTime>2015-08-13T03:01:45.000Z</e:startTime>
+					<e:endTime>2015-08-13T04:41:50.000Z</e:endTime>
+					<e:duration>01:40:05:00</e:duration>
+				</e:time>
+				<e:time type="public">
+					<e:startTime>2015-08-13T03:00:00.000Z</e:startTime>
+					<e:endTime>2015-08-13T04:45:00.000Z</e:endTime>
+					<e:duration>01:45:00:00</e:duration>
+				</e:time>
+			</e:timeList>
+			<e:contentIdRef>se.canalplus.content.7003100011632825</e:contentIdRef>
+			<e:materialIdRef>se.canalplus.material.1000080011632825</e:materialIdRef>
+			<e:previousEventList>
+				<e:event>
+					<e:eventId> se.canalplus.event.10000800116329328</e:eventId>
+					<e:channelId> se.canalplus.channel.8</e:channelId>
+					<e:descriptionList/>
+					<e:rerun>true</e:rerun>
+					<e:live>false</e:live>
+					<e:timeList>
+						<e:time type="public">                   
+							<e:startTime>2015-11-20T16:30:00.000Z</e:startTime>
+							<e:endTime>2015-11-20T16:15:00.000Z</e:endTime>
+							<e:duration>01:45:00:00</e:duration>
+						</e:time>
+					</e:timeList>
+				</e:event>
+			</e:previousEventList>
+			<e:customPropertyList> 
+				<e:customProperty key="Property1">
+					<e:propertyValue>Some generic value</e:propertyValue>
+				</e:customProperty>
+				<e:customProperty key="Property2">
+					<e:propertyValue  language="swe">Some swedish value</e:propertyValue>
+					<e:propertyValue  language="nor">Some norwegian value</e:propertyValue>
+				</e:customProperty>
+				<e:customProperty key="Property3">
+					<e:propertyValue order="0">First value</e:propertyValue >
+					<e:propertyValue order="1">Second  value</e:propertyValue>
+					<e:propertyValue order="2">Third value</e:propertyValue>
+				</e:customProperty>
+				<e:customProperty key="Property4">
+					<e:propertyValue type="series">Another generic series value</e:propertyValue>
+					<e:propertyValue type="season">Another generic season value</e:propertyValue>
+					<e:propertyValue type="content">Another generic content value</e:propertyValue>
+				</e:customProperty>
+			</e:customPropertyList>
+		</e:event>
+	</s:eventList>
+</s:schedule>
